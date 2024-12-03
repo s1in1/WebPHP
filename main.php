@@ -7,65 +7,409 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Landing</title>
 </head>
 <body>
+
+<style>
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited  {
+    text-decoration: none;
+}
+
+a:hover  {
+    text-decoration: none;
+}
+
+aside, nav, footer, header, section, main {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img, svg {
+	max-width: 100%;   
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button, input[type="submit"] {
+    /* display: inline-block;
+    box-shadow: none;
+    cursor: pointer; */
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+/* body */
+
+body {
+    background-color: #2D2D2D;
+    font-family: "Inter", sans-serif;
+}
+
+/* container */
+
+.container {
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    padding: 36px 375px 0 375px;
+}
+
+/* header 1*/
+
+.firstHeader {
+    background-color: #000;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    color: #fff;
+    font-size: 14px;
+}
+
+.logo {
+    height: 32px;
+}
+
+
+.header__elEnd {
+    align-items: center;
+    display: flex;
+    
+    margin-left: 670px;
+}
+
+.header__login {
+    display: flex;
+}
+
+.header__login_acc {
+    color: #F58C19;
+}
+
+/* header 2 */
+
+.secHeader {
+    color: #fff;
+    font-size: 18px;
+}
+
+.secHeader__nav_list {
+    display: flex;
+    flex-direction: row;
+    gap: 34px;
+    align-items: center;
+}
+
+.secHeader__nav_search {
+    border-radius: 12px;
+    width: 370px;
+    height: 38px;
+
+    color: #000;
+    font-size: 18px;
+    padding: 8px 20px;
+
+    background: #dfdfdf;
+}
+
+.secHeader__nav_search:hover {
+    transition: all ease-in-out 0.3s;
+    background-color: #fff;
+    box-shadow: 0px 5px #000;
+}
+
+.secHeader__nav_search::placeholder {
+    color: #000;
+}
+
+/* content */
+
+.content {
+    margin-top: 132px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+/* left sidebar */
+
+.content__sideBar {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+.content__sideBar_categories {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    background-color: #fff;
+    border-radius: 12px;
+
+    padding: 18px;
+    width: 300px;
+}
+
+.content__sideBar_categories_title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #000;
+}
+
+.content__sideBar_categories_list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.content__sideBar_categories_list_catName {
+    font-weight: 400;
+    font-size: 20px;
+    color: #000;
+}
+
+.content__sideBar_categories_list_type {
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.content__sideBar_subscription {
+    display: flex;
+    flex-direction: column;
+
+    padding: 18px;
+
+    border-radius: 12px;
+    width: 300px;
+    height: 291px;
+
+    background: #f58c19;
+}
+
+.content__sideBar_subscription_title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+    padding-right: 10px;
+
+    margin-bottom: 24px;
+}
+
+.content__sideBar_subscription_email {
+    border-radius: 12px;
+
+    background-color: #dfdfdf;
+
+    padding: 10px;
+
+    margin-bottom: 12px;
+}
+
+.content__sideBar_subscription_email::placeholder {  
+    color: #000;
+}
+
+.content__sideBar_subscription_btn {
+    border-radius: 12px;
+
+    background-color: #dfdfdf;
+
+    padding: 10px 82px;   
+}
+
+.content__sideBar_subscription_btn::placeholder {  
+    color: #F58C19;
+}
+
+.content__sideBar_subscription_notification {
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+}
+
+.content__sideBar_subscription_email:hover, .content__sideBar_subscription_btn:hover {
+    transition: all ease-in-out 0.3s;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #fff;
+}
+
+/* main */
+
+.content__main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.content__main__sort {
+    display: flex;
+    gap:8px;
+
+    padding: 15px 20px;
+
+    background-color: #fff;
+    border-radius: 12px;
+    width: 840px;
+    height: 52px;
+}
+
+.content__main__sort_a {
+    cursor: none;
+
+    color:#F58C19;
+}
+
+.content__main__sort_btn {
+    cursor: pointer;
+}
+
+.content__main__products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    color: #000;
+}
+
+.content__main__products_card {
+    border-radius: 12px;
+    width: 260px;
+    height: 368px;
+
+    padding: 12px 24px;
+
+    background: #fff;
+}
+
+.content__main__products_card_img {
+    margin-bottom: 12px;
+}
+
+.content__main__products_card_title {
+    font-weight: 400;
+    font-size: 16px;
+    
+    margin-bottom: 52px;
+}
+
+.content__main__products_cardBottom {
+    display: flex;
+    gap: 12px;
+}
+
+</style>
+
+    <div class="firstHeader">
+
+        <img src="./assets/img/logo/long_mcquade_logo.png.png" alt="" class="logo">
+
+        <div class="header__el">
+            <ul class="header__ul">
+                <li class="header__ul_li">+1 234 566 78 90</li>
+                <li class="header__ul_li">+1 234 566 78 90</li>
+            </ul>
+        </div>
+
+        <div class="header__el">
+        <ul class="header__ul"> 
+            <li class="header__ul_li">
+                <p>longandmcsupport@mail.com</p>
+            </li>
+                <li class="header__ul_li">
+                    <img src="./assets/img/icons/ic_baseline-telegram.png" alt="" class="header__ul_li_link">
+                    <img src="./assets/img/icons/mingcute_whatsapp-fill.png" alt="" class="header__ul_li_link">
+                    <img src="./assets/img/icons/ri_instagram-fill.png" alt="" class="header__ul_li_link">
+                    <img src="./assets/img/icons/entypo-social_vk-with-circle.png" alt="" class="header__ul_li_link">
+                </li>
+            </ul> 
+        </div>
+
+        <div class="header__elEnd">
+            <div class="header__login">
+                <p class="header__login_p">Вы вошли в</p>                
+                <p class="header__login_acc">emaildfsasfasfsf</p>
+            </div>
+
+            <!-- <div class="header__lang">
+                <p class="header__lang_p">Русский</p>
+                <div class="header__lang_btn"><a><img src="" alt=""></a></div>
+            </div>   -->
+        </div>             
+
+    </div >
+
     <div class="container">
-
-        <header class="header">
-
-            <img src="./assets/img/logo/long_mcquade_logo.png.png" alt="" class="logo">
-
-            <div class="header__el">
-                <ul class="header__ul">
-                    <li class="header__ul_li">+1 234 566 78 90</li>
-                    <li class="header__ul_li">+1 234 566 78 90</li>
-                </ul>
-            </div>
-            
-            <div class="header__el">
-               <ul class="header__ul"> 
-                   <li class="header__ul_li">
-                        <p>longandmcsupport@mail.com</p>
-                   </li>
-                    <li class="header__ul_li">
-                        <img src="./assets/img/icons/ic_baseline-telegram.png" alt="" class="header__ul_li_link">
-                        <img src="./assets/img/icons/mingcute_whatsapp-fill.png" alt="" class="header__ul_li_link">
-                        <img src="./assets/img/icons/ri_instagram-fill.png" alt="" class="header__ul_li_link">
-                        <img src="./assets/img/icons/entypo-social_vk-with-circle.png" alt="" class="header__ul_li_link">
-                    </li>
-                </ul> 
-            </div>
-            
-            <div class="header__el">
-               <div class="header__login">
-                    <p class="header__login_p">Вы вошли в </p>
-                    <p class="header__login_acc"></p>
-                </div>
-
-                <div class="header__lang">
-                    <p class="header__lang_p">Русский</p>
-                    <div class="header__lang_btn"><a><img src="" alt=""></a></div>
-                </div>  
-            </div>
-                   
-
-        </header>
 
         <div class="secHeader">
 
             <nav class="secHeader__nav">
                 <ul class="secHeader__nav_list">
-                    <li class="secHeader__nav_list_link current">Главная</li>
-                    <li class="secHeader__nav_list_link">Каталог</li>
-                    <li class="secHeader__nav_list_link">О нас</li>
-                    <li class="secHeader__nav_list_link">Бренды</li>
-                    <li class="secHeader__nav__search"><input type="search" name="" id=""></li>
-                    <li class="secHeader__nav_list_link">Войти</li>
-                    <li class="secHeader__nav_list_link">Добавить товар</li>
-                    <li class="secHeader__nav_list_cart"><img src="" alt=""></li>
-                    <li class="secHeader__nav_list_fav"><img src="" alt=""></li>
+                    <li class="secHeader__nav_list_link current"><a>Главная</a></li>
+                    <li class="secHeader__nav_list_link"><a>Каталог</a></li>
+                    <li class="secHeader__nav_list_link"><a>О нас</a></li>
+                    <li class="secHeader__nav_list_link"><a>Бренды</a></li>
+                    <li class="secHeader__nav_search"><input type="text" placeholder="Поиск" name="search" id=""></li>
+                    <li class="secHeader__nav_list_link"><a>Войти</a></li>
+                    <li class="secHeader__nav_list_link"><a>Добавить товар</a></li>
+                    <li class="secHeader__nav_list_cart"><a></a><img src="./assets/img/icons/cart.png" alt=""></li>
+                    <li class="secHeader__nav_list_fav"><a></a><img src="./assets/img/icons/heart.png" alt=""></li>
                 </ul>
             </nav>
 
@@ -106,8 +450,8 @@
 
                     <h1 class="content__sideBar_subscription_title">Подпишитесь на рассылку, чтобы узнавать о новых поступлениях</h1>
 
-                    <input class="content__sideBar_subscription_email" type="email" name="" id="">
-                    <input class="content__sideBar_subscription_btn" type="submit" name="" id="">
+                    <input class="content__sideBar_subscription_email" type="email" placeholder="Email" name="" id="">
+                    <input class="content__sideBar_subscription_btn" type="submit" placeholder="Отправить" name="" id="">
 
                     <p class="content__sideBar_subscription_notification">*нажимая, вы соглашаетесь с Пользовательским соглашением</p>
 
@@ -121,7 +465,7 @@
 
                     <p class="content__main__sort_p">Сортировать:</p>
                     <a href="" class="content__main__sort_a">сначала недорогие</a>
-                    <img src="" alt="" class="content__main__sort_btn">
+                    <img src="./assets/img/icons/downArrow.png" alt="" class="content__main__sort_btn">
 
                 </div>
 
@@ -129,21 +473,27 @@
 
                     <div class="content__main__products_card">
 
-                        <img class="content__main__products_card_img" src="" alt="">
+                        <img class="content__main__products_card_img" src="./assets/img/products/ibanez1.jpg" alt="">
 
-                        <h1 class="content__main__products_card_title"></h1>
+                        <h1 class="content__main__products_card_title">IBANEZ TCY10E-BK</h1>
 
-                        <div class="content__main__products_card_block">
-                            <p class="content__main__products_card_price"></p>
+                        <div class="content__main__products_cardBottom">
+
+                            <div class="content__main__products_card_block">
+                            <p class="content__main__products_card_price">28 500 р.</p>
+                            </div>
+
+                            <div class="content__main__products_card_block">
+                            <img class="content__main__products_card_addToFav" src="./assets/img/icons/heart-outline.svg" alt="">
+                            </div>
+
+                            <div class="content__main__products_card_cartBlock">
+                            <img class="content__main__products_card_addToCart" src="./assets/img/icons/cart-outline.svg" alt="">
+                            </div>
+
                         </div>
 
-                        <div class="content__main__products_card_block">
-                            <img class="content__main__products_card_addToFav" src="" alt="">
-                        </div>
-
-                        <div class="content__main__products_card_cartBlock">
-                            <img class="content__main__products_card_addToCart" src="" alt="">
-                        </div>
+                        
 
                     </div>
 

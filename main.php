@@ -125,6 +125,7 @@ body {
 
 .logo {
     height: 32px;
+    cursor: pointer;
 }
 
 
@@ -157,6 +158,12 @@ body {
     align-items: center;
 }
 
+.secHeader__nav_list_link:hover {
+    transition: all ease-in-out 0.3s;
+    color:#F58C19;
+    cursor:pointer;
+}
+
 .secHeader__nav_search {
     border-radius: 12px;
     width: 370px;
@@ -179,6 +186,11 @@ body {
     color: #000;
 }
 
+.secHeader__nav_list_cart:hover, 
+.secHeader__nav_list_fav:hover {
+    cursor: pointer;
+}
+
 /* content */
 
 .content {
@@ -186,6 +198,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 30px;
+    margin-bottom: 52px;
 }
 
 /* left sidebar */
@@ -312,8 +325,7 @@ body {
 }
 
 .content__main__sort_a {
-    cursor: none;
-
+    cursor: default;
     color:#F58C19;
 }
 
@@ -336,10 +348,14 @@ body {
     padding: 12px 24px;
 
     background: #fff;
+
+    position: relative;
 }
 
 .content__main__products_card_img {
     margin-bottom: 12px;
+
+    position: relative;
 }
 
 .content__main__products_card_title {
@@ -349,11 +365,138 @@ body {
     margin-bottom: 52px;
 }
 
-.content__main__products_cardBottom {
-    display: flex;
-    gap: 12px;
+.content__main__products_card_title::after {
+    content: '';
+    position: absolute;
+    inset: 0;
 }
 
+.content__main__products_card a {
+    color: #000;
+}
+
+.content__main__products_cardBottom {
+    display: flex;
+    gap: 10px;
+}
+
+.content__main__products_card_priceBlock {
+    padding: 10px 45px 10px 6px;
+
+    border-radius: 8px;
+
+    background: #dbdbdb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.content__main__products_card_price {
+    font-weight: 600;
+    font-size: 16px;
+
+    white-space: nowrap;
+}
+
+.content__main__products_card_favBlock {
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #dbdbdb;
+
+    padding: 0px 4px;
+
+    position: relative;
+}
+
+.content__main__products_card_cartBlock {
+    border-radius: 8px;
+    background-color: #f58c19;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0px 4px;
+
+    position: relative;
+}
+
+.content__main__products_card_priceBlock:hover,
+.content__main__products_card_favBlock:hover {
+    cursor: pointer;
+
+    transition: all ease-in-out 0.3s;
+
+    background-color: #fff;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.content__main__products_card_cartBlock:hover {
+    cursor: pointer;
+
+    transition: all ease-in-out 0.3s;
+
+    background-color: rgba(245, 140, 25, 0.8);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.content__main__downloadMore {
+    text-align: center;
+}
+
+.content__main__downloadMore a{
+    color:#F58C19;
+}
+
+/* footer */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px 0;
+
+    background-color: #000;
+
+    color: #fff;
+}
+
+.footer__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 116px;
+}
+
+.footer__nav__pages__list_el h1 {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.footer__nav__pages__list, .footer__nav__help__list,
+.footer__nav__company__list,
+.footer__nav__location__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    word-break: break-all;
+}
+
+.footer__nav__pages__list_el {
+    
+    overflow: hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}
 </style>
 
     <div class="firstHeader">
@@ -384,7 +527,7 @@ body {
         <div class="header__elEnd">
             <div class="header__login">
                 <p class="header__login_p">Вы вошли в</p>                
-                <p class="header__login_acc">emaildfsasfasfsf</p>
+                <p class="header__login_acc">" "emaildfsasfasfsf</p>
             </div>
 
             <!-- <div class="header__lang">
@@ -401,7 +544,7 @@ body {
 
             <nav class="secHeader__nav">
                 <ul class="secHeader__nav_list">
-                    <li class="secHeader__nav_list_link current"><a>Главная</a></li>
+                    <li class="secHeader__nav_list_link"><a>Главная</a></li>
                     <li class="secHeader__nav_list_link"><a>Каталог</a></li>
                     <li class="secHeader__nav_list_link"><a>О нас</a></li>
                     <li class="secHeader__nav_list_link"><a>Бренды</a></li>
@@ -475,15 +618,15 @@ body {
 
                         <img class="content__main__products_card_img" src="./assets/img/products/ibanez1.jpg" alt="">
 
-                        <h1 class="content__main__products_card_title">IBANEZ TCY10E-BK</h1>
+                        <a href="/"><h1 class="content__main__products_card_title">IBANEZ TCY10E-BK</h1></a>
 
                         <div class="content__main__products_cardBottom">
 
-                            <div class="content__main__products_card_block">
+                            <div class="content__main__products_card_priceBlock">
                             <p class="content__main__products_card_price">28 500 р.</p>
                             </div>
 
-                            <div class="content__main__products_card_block">
+                            <div class="content__main__products_card_favBlock">
                             <img class="content__main__products_card_addToFav" src="./assets/img/icons/heart-outline.svg" alt="">
                             </div>
 
@@ -491,9 +634,7 @@ body {
                             <img class="content__main__products_card_addToCart" src="./assets/img/icons/cart-outline.svg" alt="">
                             </div>
 
-                        </div>
-
-                        
+                        </div>                  
 
                     </div>
 
@@ -507,52 +648,52 @@ body {
 
         </div>
 
-        <footer class="footer">
+    </div>
 
-            <div class="footer__nav">
+    <footer class="footer">
 
-                <div class="footer__nav__logo">
-                    <img class="footer__nav__logo_img" src="" alt="">
-                </div>
+        <div class="footer__nav">
 
-                <div class="footer__nav__pages">
-                    <ul class="footer__nav__pages__list">
-                        <li class="footer__nav__pages__list_el"><h1>Страницы</h1></li>
-                        <li class="footer__nav__pages__list_el">Главная</li>
-                        <li class="footer__nav__pages__list_el">Каталог</li>
-                        <li class="footer__nav__pages__list_el">Войти</li>
-                    </ul>
-                </div>
-
-                <div class="footer__nav__help">
-                    <ul class="footer__nav__help__list">
-                        <li class="footer__nav__pages__list_el"><h1>Помощь</h1></li>
-                        <li class="footer__nav__pages__list_el">FAQ</li>
-                        <li class="footer__nav__pages__list_el">Помощь</li>
-                        <li class="footer__nav__pages__list_el">Пользовательское соглашение</li>
-                    </ul>
-                </div>
-
-                <div class="footer__nav__company">
-                    <ul class="footer__nav__company__list">
-                        <li class="footer__nav__pages__list_el"><h1>Компнания</h1></li>
-                        <li class="footer__nav__pages__list_el">О нас</li>
-                        <li class="footer__nav__pages__list_el">Вакансии</li>
-                        <li class="footer__nav__pages__list_el">Бренды</li>
-                    </ul>
-                </div>
-
-                <div class="footer__nav__location">
-                    <ul class="footer__nav__location__list">
-                        <li class="footer__nav__pages__list_el"><h1>Страницы</h1></li>
-                        <li class="footer__nav__pages__list_el"><img src="" alt=""></li>                      
-                    </ul>
-                </div>
-
+            <div class="footer__nav__logo">
+                <img class="footer__nav__logo_img" src="/assets/img/logo/long_mcquade_logo.png.png" alt="">
             </div>
 
-        </footer>
+            <div class="footer__nav__pages">
+                <ul class="footer__nav__pages__list">
+                    <li class="footer__nav__pages__list_el"><h1>Страницы</h1></li>
+                    <li class="footer__nav__pages__list_el">Главная</li>
+                    <li class="footer__nav__pages__list_el">Каталог</li>
+                    <li class="footer__nav__pages__list_el">Войти</li>
+                </ul>
+            </div>
 
-    </div>
+            <div class="footer__nav__help">
+                <ul class="footer__nav__help__list">
+                    <li class="footer__nav__pages__list_el"><h1>Помощь</h1></li>
+                    <li class="footer__nav__pages__list_el">FAQ</li>
+                    <li class="footer__nav__pages__list_el">Помощь</li>
+                    <li class="footer__nav__pages__list_el">Оферта</li>
+                </ul>
+            </div>
+
+            <div class="footer__nav__company">
+                <ul class="footer__nav__company__list">
+                    <li class="footer__nav__pages__list_el"><h1>Компания</h1></li>
+                    <li class="footer__nav__pages__list_el">О нас</li>
+                    <li class="footer__nav__pages__list_el">Вакансии</li>
+                    <li class="footer__nav__pages__list_el">Бренды</li>
+                </ul>
+            </div>
+
+            <div class="footer__nav__location">
+                <ul class="footer__nav__location__list">
+                    <li class="footer__nav__pages__list_el"><h1>Мы здесь</h1></li>
+                    <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/43/kazan/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Казань</a><a href="https://yandex.ru/maps/43/kazan/house/ulitsa_bari_galeyeva_3a/YEAYdwBmT00OQFtvfXRxcHlgYg==/?ll=49.177559%2C55.801403&utm_medium=mapframe&utm_source=maps&z=18.78" style="color:#eee;font-size:12px;position:absolute;top:14px;">Улица Бари Галеева, 3А — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?ll=49.177559%2C55.801403&mode=whatshere&whatshere%5Bpoint%5D=49.177652%2C55.801310&whatshere%5Bzoom%5D=17&z=18.78" width="180" height="90" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>                     
+                </ul>
+            </div>
+
+        </div>
+
+    </footer>
 </body>
 </html>

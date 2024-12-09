@@ -1,7 +1,3 @@
-<?php
-    $rating = 4;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,11 +66,7 @@
         display: none;
     }
 
-    button, input[type="submit"] {
-        /* display: inline-block;
-        box-shadow: none;
-        cursor: pointer; */
-    }
+    
 
     input:focus, input:active,
     button:focus, button:active {
@@ -204,134 +196,67 @@
     .main {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        
+        align-items: center;
 
         margin-top: 100px;
         margin-bottom: 50px;
     }
 
-    .product__card__top {
+    .loginBlock {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        gap: 32px;
+        
         align-items: center;
-        justify-content: space-between;
-    }
-
-    .product_title {
-        font-weight: 700;
-        font-size: 32px;
-        color: #eee;
-    }
-
-    .product_art {
-        font-weight: 400;
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    .product__card {
-        display: flex;
-        gap: 54px;
-
-        padding: 38px 8px 22px 50px;
 
         background-color: #fff;
+        padding: 40px 70px;
+
         border-radius: 12px;
     }
 
-    .product__card_img {
-        width: 470px;
-    }
-
-    .product__card__info {
-        display: flex;
-        flex-direction: column;
-        gap: 38px;
-    }
-
-    .product__card__cat {
-        font-weight: 400;
-        font-size: 16px;
-        color: #000;
-    }
-
-    .product__card__descEl {
-        font-weight: 400;
-        font-size: 18px;
-    }
-
-    .product__card_description a {
-        font-weight: 400;
-        font-size: 18px;
-        color: rgba(0, 0, 0, 0.5);
-    }
-
-    .product__card__purchEl {
-        display: flex;
-        gap: 10px;
-    }
-
-    .product__card__price {
-        padding: 4px 80px 4px 8px;
-
-        display: flex;
-        align-items: center;
-
-        background-color: #dbdbdb;
-        border-radius: 6px;
-    }
-
-    .product__card__price h2 {
+    .loginBlock_heading {
         font-weight: 700;
-        font-size: 20px;
+        font-size: 32px;
         color: #f58c19;
     }
 
-    .product__card_fav {
-        padding: 4px 12px;
-
+    .loginBlock__inputs {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
 
-        border-radius: 6px;
+    .loginBlock__inputs_el {
         background-color: #dbdbdb;
+        border-radius: 4px;
 
-        cursor: pointer;
+        padding: 10px;
     }
 
-    .product__card_buy {
-        border-radius: 6px;
-        background: #f58c19;
+    .loginblock_enterBtn {
+        background-color: #f58c19;
+        border-radius: 4px;
+        min-width: 100%;
 
-        padding: 14px 16px;
-
-        font-weight: 800;
-        font-size: 16px;
+        font-weight: 700;
+        font-size: 18px;
         color: #fff;
+        text-align: center;
 
-        display: flex;
-        align-items: center;
+        padding: 10px;
+    }
 
+    .loginblock_enterBtn:hover {
         cursor: pointer;
-    }
-
-    .product__card_fav:hover {
-        transition: all ease-in-out 0.3s;
-        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-        background: #fff;
-    }
-
-    .product__card_buy:hover {
         transition: all ease-in-out 0.3s;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
         background: #F9A03F;
     }
 
-    .product_change {
-        color: rgba(0, 0, 0, 0.5);
-        position:relative;
-        right: 0;
-        bottom: 0;
+    .loginBlock__notif a {
+        color: #F58C19;
     }
 
     /* footer */
@@ -442,49 +367,24 @@
 
         <div class="main">
 
-            <div class="product__card__top">
+            <div class="loginBlock">
 
-                <h1 class="product_title">IBANEZ TCY10E-BK</h1>
+                <h1 class="loginBlock_heading">Войти</h1>
 
-                <p class="product_art">Артикул: A052681</p>
+                <div class="loginBlock__inputs">
 
-            </div>
+                    <input type="text" placeholder="Логин" id="" class="loginBlock__inputs_el">
 
-            <div class="product__card">
+                    <input type="email" placeholder="Электронная почта" id="" class="loginBlock__inputs_el">
 
-                <div class="product__card_img"><img src="/assets/img/products/ibanez1.jpg" alt=""></div>
-
-                <div class="product__card__info">
-
-                    <div class="product__card__catEl"><p class="product__card__cat">Акустические гитары</p></div>
-
-                    <div class="product__card__descEl">
-
-                        <div class="product__card_rate">
-                            <img src="/assets/img/icons/ic_round-star.svg" alt="">
-                            <img src="/assets/img/icons/ic_round-star.svg" alt="">
-                            <img src="/assets/img/icons/ic_round-star.svg" alt="">
-                            <img src="/assets/img/icons/ic_round-star.svg" alt="">
-                        </div>
-
-                        <p class="product__card_description">Электроакустическая гитара, черная модель в корпусе talman, 20 ладов... <a href="">подробнее</a></p>
-
-                    </div>
-
-                    <div class="product__card__purchEl">
-
-                        <div class="product__card__price"><h2>28 500 р.</h2></div>
-
-                        <div class="product__card_fav"><img src="/assets/img/icons/heart-outline.svg" alt=""></div>
-
-                        <div class="product__card_buy"><input type="submit" value="Купить"></div>
-
-                    </div>         
-
-                    <a class="product_change" href="">Изменить</a>
+                    <input type="password" placeholder="Пароль" id="" class="loginBlock__inputs_el">
 
                 </div>
-                
+
+                <button class="loginblock_enterBtn">Войти</button>
+
+                <div class="loginBlock__notif"><p>Нет учетной записи?</p><a href="">Зарегистрируйтесь!</a></div>
+
             </div>
 
         </div>

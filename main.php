@@ -1,3 +1,14 @@
+<?php
+    include "./connection/database.php";
+
+    $sql = "SELECT * FROM products";
+    $stmt = $database->prepare($sql);
+
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,6 +160,15 @@ body {
 .secHeader {
     color: #fff;
     font-size: 18px;
+}
+
+.secHeader a {
+    color:#fff;
+}
+
+.secHeader a:hover {
+    transition: all ease-in-out 0.2s;
+    color: #F58C19;
 }
 
 .secHeader__nav_list {
@@ -350,6 +370,10 @@ body {
     background: #fff;
 
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .content__main__products_card_img {
@@ -362,7 +386,6 @@ body {
     font-weight: 400;
     font-size: 16px;
     
-    margin-bottom: 52px;
 }
 
 .content__main__products_card_title::after {
@@ -377,18 +400,17 @@ body {
 
 .content__main__products_cardBottom {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
 }
 
 .content__main__products_card_priceBlock {
-    padding: 10px 45px 10px 6px;
-
+    padding: 6px 40px 6px 6px;
+    width: 60%;
     border-radius: 8px;
 
     background: #dbdbdb;
 
     display: flex;
-    justify-content: center;
     align-items: center;
 
     position: relative;
@@ -410,7 +432,7 @@ body {
 
     background: #dbdbdb;
 
-    padding: 0px 4px;
+    padding: 0px 6px;
 
     position: relative;
 }
@@ -423,12 +445,11 @@ body {
     justify-content: center;
     align-items: center;
 
-    padding: 0px 4px;
+    padding: 0px 6px;
 
     position: relative;
 }
 
-.content__main__products_card_priceBlock:hover,
 .content__main__products_card_favBlock:hover {
     cursor: pointer;
 
@@ -526,8 +547,9 @@ body {
 
         <div class="header__elEnd">
             <div class="header__login">
-                <p class="header__login_p">Вы вошли в</p>                
-                <p class="header__login_acc">" "emaildfsasfasfsf</p>
+                <p class="header__login_p">Вы вошли в</p>      
+                <pre> </pre>          
+                <p class="header__login_acc">emaildfsasfasfsf</p>
             </div>
 
             <!-- <div class="header__lang">
@@ -544,13 +566,13 @@ body {
 
             <nav class="secHeader__nav">
                 <ul class="secHeader__nav_list">
-                    <li class="secHeader__nav_list_link"><a>Главная</a></li>
+                    <li class="secHeader__nav_list_link"><a href="./main.php">Главная</a></li>
                     <li class="secHeader__nav_list_link"><a>Каталог</a></li>
                     <li class="secHeader__nav_list_link"><a>О нас</a></li>
                     <li class="secHeader__nav_list_link"><a>Бренды</a></li>
                     <li class="secHeader__nav_search"><input type="text" placeholder="Поиск" name="search" id=""></li>
-                    <li class="secHeader__nav_list_link"><a>Войти</a></li>
-                    <li class="secHeader__nav_list_link"><a>Добавить товар</a></li>
+                    <li class="secHeader__nav_list_link"><a href="./login.php">Войти</a></li>
+                    <li class="secHeader__nav_list_link"><a href="./add.php">Добавить товар</a></li>
                     <li class="secHeader__nav_list_cart"><a></a><img src="./assets/img/icons/cart.png" alt=""></li>
                     <li class="secHeader__nav_list_fav"><a></a><img src="./assets/img/icons/heart.png" alt=""></li>
                 </ul>
@@ -577,14 +599,14 @@ body {
                         <li class="content__sideBar_categories_list_catName">Ударные инструменты</li>
                         <li class="content__sideBar_categories_list_type"><a>Акустические установки</a></li>
                         <li class="content__sideBar_categories_list_type"><a>Электронные установки</a></li>
-                        <li class="content__sideBar_categories_list_type"><a>Палочки</a></li>
+                        <li class="content__sideBar_categories_list_type"><a>Барабанные палочки</a></li>
                     </ul>
 
                     <ul class="content__sideBar_categories_list">
                         <li class="content__sideBar_categories_list_catName">Микрофоны</li>
-                        <li class="content__sideBar_categories_list_type"><a>Динамические</a></li>
-                        <li class="content__sideBar_categories_list_type"><a>Конденсаторные</a></li>
-                        <li class="content__sideBar_categories_list_type"><a>Инструментальные</a></li>
+                        <li class="content__sideBar_categories_list_type"><a>Динамические микрофоны</a></li>
+                        <li class="content__sideBar_categories_list_type"><a>Конденсаторные микрофоны</a></li>
+                        <li class="content__sideBar_categories_list_type"><a>Инструментальные микрофоны</a></li>
                     </ul>
 
                 </div>
@@ -614,16 +636,22 @@ body {
 
                 <div class="content__main__products">
 
+                <?php
+                    foreach($result as $item) {
+                ?>
+
                     <div class="content__main__products_card">
 
-                        <img class="content__main__products_card_img" src="./assets/img/products/ibanez1.jpg" alt="">
+                        <div class="content__main__products__cardTop">
+                            <img class="content__main__products_card_img" src="./assets/img/products/ibanez1.jpg" alt="">
 
-                        <a href="/"><h1 class="content__main__products_card_title">IBANEZ TCY10E-BK</h1></a>
+                            <a href="./product.php?id=<?=$item["id"]?>"><h1 class="content__main__products_card_title"><?=$item["title"] ?></h1></a>
+                        </div>
 
                         <div class="content__main__products_cardBottom">
 
                             <div class="content__main__products_card_priceBlock">
-                            <p class="content__main__products_card_price">28 500 р.</p>
+                            <p class="content__main__products_card_price"><?=number_format($item["price"], 0, '', ' ')?> p.</p>
                             </div>
 
                             <div class="content__main__products_card_favBlock">
@@ -638,11 +666,15 @@ body {
 
                     </div>
 
+                    <?php
+                    }
+                    ?>
+
                 </div>
 
-                <div class="content__main__downloadMore">
+                <!-- <div class="content__main__downloadMore">
                     <a href="">Загрузить ещё</a>
-                </div>
+                </div> -->
 
             </div>       
 

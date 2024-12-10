@@ -21,21 +21,8 @@
         }
     }
 
-    if($_SERVER['REQUEST_METHOD']==='POST')  {
-        $product_id = trim(htmlspecialchars($_POST['product_id']));
-
-        $sql = "DELETE FROM products WHERE id=:id";
-
-        $stmt = $database->prepare($sql);
-
-        $stmt->bindValue(":id", $product_id);
-
-        if ($stmt->execute()) {
-            header("Location: /main.php");
-        }
-        else {
-            echo "Запрос не выполнен";
-        }
+    if ($_SERVER['REQUEST_METHOD'==='POST']) {
+        $product_title = trim(htmlspecialchars($_POST['product_title']));
     }
 ?>
 
@@ -47,10 +34,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <title>Product</title>
+    <title>Update</title>
 </head>
 <body>
-    <style>
+<style>
     * {
         padding: 0px;
         margin: 0px;
@@ -149,6 +136,7 @@
     .container {
         display: flex;
         flex-direction: column ;
+        align-items: center;
         
         padding: 36px 375px 0 375px;
 
@@ -254,154 +242,70 @@
     .main {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-
-        margin-top: 100px;
-        margin-bottom: 50px;
-    }
-
-    .product__card__top {
-        display: flex;
-        flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-    }
-
-    .product_title {
-        font-weight: 700;
-        font-size: 32px;
-        color: #eee;
-    }
-
-    .product_art {
-        font-weight: 400;
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    .product__card {
-        display: flex;
-        gap: 54px;
-
-        padding: 38px 8px 22px 50px;
+        gap:32px;
 
         background-color: #fff;
         border-radius: 12px;
+
+        margin-top: 124px;
+        margin-bottom: 70px;
+        padding: 40px 70px;
+
+        box-sizing: border-box;
+        width: 50%;
     }
 
-    .product__card_img {
-        width: 470px;
-    }
-
-    .product__card__info {
-        display: flex;
-        flex-direction: column;
-        gap: 38px;
-    }
-
-    .product__card__cat {
-        font-weight: 400;
-        font-size: 16px;
-        color: rgba(0, 0, 0, 0.5);
-    }
-
-    .product__card__descEl {
-        font-weight: 400;
-        font-size: 18px;
-
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .product__card_rate_p {
-        font-weight: 400;
-        font-size: 12px;
-        color: rgba(0, 0, 0, 0.5);
-    }
-
-    .product__card_description a {
-        font-weight: 400;
-        font-size: 18px;
-        color: rgba(0, 0, 0, 0.5);
-    }
-
-    .product__card__purchEl {
-        display: flex;
-        gap: 10px;
-    }
-
-    .product__card__price {
-        padding: 4px 80px 4px 8px;
-
-        display: flex;
-        align-items: center;
-
-        background-color: #dbdbdb;
-        border-radius: 6px;
-    }
-
-    .product__card__price h2 {
+    .update_header {
+        font-family: var(--font-family);
         font-weight: 700;
-        font-size: 20px;
+        font-size: 32px;
         color: #f58c19;
     }
 
-    .product__card_fav {
-        padding: 4px 12px;
-
+    .update__form {
         display: flex;
-        align-items: center;
-
-        border-radius: 6px;
-        background-color: #dbdbdb;
-
-        cursor: pointer;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 16px;
     }
 
-    .product__card_buy {
+    .update__form__inputBlock {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .update__form__inputBlock label {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .update__form_input {
+        background: #dbdbdb;
+        border-radius: 6px;
+        padding: 10px;
+    }
+
+    .update__form_input+textarea {
+        border:none;
+    }
+
+    .update__form_input:focus {
+        border: 2px solid #000;
+        padding: 8px;
+    }
+
+    .update__form_inputSubmit {
+        padding: 10px;
         border-radius: 6px;
         background: #f58c19;
-
-        padding: 14px 16px;
-
-        font-weight: 800;
-        font-size: 16px;
         color: #fff;
+    }
 
-        display: flex;
-        align-items: center;
-
+    .update__form_inputSubmit:hover {
         cursor: pointer;
-    }
-
-    .product__card_fav:hover {
-        transition: all ease-in-out 0.3s;
+        background-color: rgba(245, 140, 25, 0.8);
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-        background: #fff;
-    }
-
-    .product__card_buy:hover {
         transition: all ease-in-out 0.3s;
-        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-        background: #F9A03F;
-    }
-
-    .product__card__btns {
-        display: flex;
-        gap: 2px;
-    }
-
-    .product__card__btns_input {
-        color: red;
-        cursor: pointer;
-    }
-
-    .product_change {
-        color: rgba(0, 0, 0, 0.5);
-        position:relative;
-        right: 0;
-        bottom: 0;
     }
 
     /* footer */
@@ -513,66 +417,48 @@
 
         <div class="main">
 
-            <div class="product__card__top">
+            <h1 class="update_header">Редактирование</h1>
 
-                <h1 class="product_title"><?=$result['title']?></h1>
+            <form class="update__form" action="" method="post">
 
-                <p class="product_art">Артикул: <?=$result['article']?></p>
+                <div class="update__form__inputBlock">
+                    <label for="">Название</label>
+                    <input class="update__form_input" type="text" name="product_title" id="" value="<?=$result['title'] ?>">
+                </div>                    
+                
 
-            </div>
+                <div class="update__form__inputBlock">
+                    <label for="">Категория</label>
+                    <input class="update__form_input" type="text" name="product_category" id="" value="<?=$result['category'] ?>">
+                </div>    
 
-            <div class="product__card">
 
-                <div class="product__card_img"><img src="/assets/img/products/ibanez1.jpg" alt=""></div>
+                <div class="update__form__inputBlock">
+                    <label for="">Артикул</label>
+                    <input class="update__form_input" type="text" name="product_article" id="" value="<?=$result['article'] ?>">
+                </div>
 
-                <div class="product__card__info">
 
-                    <div class="product__card__catEl"><p class="product__card__cat"><?=$result['category']?></p></div>
+                <div class="update__form__inputBlock">
+                    <label for="">Цена</label>
+                    <input class="update__form_input" type="number" name="product_price" id="" value="<?=$result['price'] ?>">
+                </div>
 
-                    <div class="product__card__descEl">
 
-                        <div class="product__card_rate">
-                            <?php 
-                                if ($result['rating'] === 0) {
-                                    echo "<p class='product__card_rate_p'>Пока нет рейтинга</p>";
-                                }
-                                else
-                                {
-                                    for ($i=0; $i < $result['rating']; $i++) { 
-                                        echo "<img src='./assets/img/icons/ic_round-star.svg'>";
-                                    }  
-                                }
-                                
-                            ?>
-                        </div>
-                        
-
-                        <p class="product__card_description"><?=$result['description']?></p>
-
-                    </div>
-
-                    <div class="product__card__purchEl">
-
-                        <div class="product__card__price"><h2><?=number_format($result['price'], 0, '', ' ')." "?>p.</h2></div>
-
-                        <div class="product__card_fav"><img src="/assets/img/icons/heart-outline.svg" alt=""></div>
-
-                        <div class="product__card_buy"><input type="submit" value="Купить"></div>
-
-                    </div>         
-
-                    <div class="product__card__btns">
-                        <a class="product_change" href="update.php?id=<?=$id?>">Изменить</a>
-                        <form action="" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить товар?')">
-                            <input type="hidden" name="product_id" value=<?=$result['id']?>>
-                            <input type="submit" value="Удалить" class="product__card__btns_input">
-                        </form>
-                    </div>
-                    
-
+                <div class="update__form__inputBlock">
+                    <label for="">Описание</label>
+                    <textarea class="update__form_input" name="product_description" id="" value="<?=$result['description'] ?>"></textarea>
                 </div>
                 
-            </div>
+
+                <div class="update__form__inputBlock">
+                    <input class="update__form_inputSubmit" type="submit" value="Редактировать">
+                </div>
+                
+
+            </form>
+
+            <div class="update_notification"><p></p></div>
 
         </div>
 

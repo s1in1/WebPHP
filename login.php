@@ -151,6 +151,14 @@
         font-size: 18px;
     }
 
+<<<<<<< HEAD
+=======
+    .secHeader a {
+        color: #fff;
+    }
+    
+
+>>>>>>> c6d754d (new 09/12)
     .secHeader__nav_list {
         display: flex;
         flex-direction: row;
@@ -351,13 +359,22 @@
 
             <nav class="secHeader__nav">
                 <ul class="secHeader__nav_list">
+<<<<<<< HEAD
                     <li class="secHeader__nav_list_link"><a>Главная</a></li>
+=======
+                    <li class="secHeader__nav_list_link"><a href="./main.php">Главная</a></li>
+>>>>>>> c6d754d (new 09/12)
                     <li class="secHeader__nav_list_link"><a>Каталог</a></li>
                     <li class="secHeader__nav_list_link"><a>О нас</a></li>
                     <li class="secHeader__nav_list_link"><a>Бренды</a></li>
                     <li class="secHeader__nav_search"><input type="text" placeholder="Поиск" name="search" id=""></li>
+<<<<<<< HEAD
                     <li class="secHeader__nav_list_link"><a>Войти</a></li>
                     <li class="secHeader__nav_list_link"><a>Добавить товар</a></li>
+=======
+                    <li class="secHeader__nav_list_link"><a href="./login.php">Войти</a></li>
+                    <li class="secHeader__nav_list_link"><a href="./add.php">Добавить товар</a></li>
+>>>>>>> c6d754d (new 09/12)
                     <li class="secHeader__nav_list_cart"><a></a><img src="./assets/img/icons/cart.png" alt=""></li>
                     <li class="secHeader__nav_list_fav"><a></a><img src="./assets/img/icons/heart.png" alt=""></li>
                 </ul>
